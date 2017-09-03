@@ -1,1 +1,3 @@
-p Nothing
+= render 'calendar', events: @events.my(current_user.id)
+hr
+= render 'events_table', events: @events.my(current_user.id)

@@ -21,4 +21,8 @@ module ApplicationHelper
     end
     flash_messages.join("\n").html_safe
   end
+
+  def link_to_with_icon(name, icon, path, params)
+    link_to content_tag(:i, nil, class: "glyphicon #{icon}") + " #{ name}", path, params
+  end
 end

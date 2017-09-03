@@ -1,25 +1,29 @@
-p#notice
-  = notice
-p
-  strong
-    | Name:
-  = @event.name
-p
-  strong
-    | Description:
-  = @event.description
-p
-  strong
-    | Start:
-  = @event.start
-p
-  strong
-    | Repetitive:
-  = @event.repetitive
-p
-  strong
-    | Repeat period:
-  = @event.repeat_period
+form
+  .form-group
+    label[for="name"]
+      | Name:
+    h4
+      span.label.label-default#name = @event.name
+  .form-group
+    label[for="description"]
+      | Description:
+    h4
+      span.label.label-default#description = @event.description
+  .form-group
+    label[for="start"]
+      | Start date:
+    h4
+      span.label.label-default#start = @event.start
+  .form-group
+    label[for="repetitive"]
+      | Repetitive:
+    h4
+      span.label.label-default#repetitive = @event.repetitive
+  .form-group
+    label[for="repeat_period"]
+      | Repeat period:
+    h4
+      span.label.label-default#repeat_period = @event.repeat_period
 = link_to 'Edit', edit_event_path(@event)
 |  |
 = link_to 'Back', events_path

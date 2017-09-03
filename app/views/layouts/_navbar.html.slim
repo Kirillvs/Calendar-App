@@ -1,8 +1,16 @@
 nav
-  ul.nav.nav-pills.float-right
-    li.nav-item
-      = link_to "Home", events_path, class: "nav-link"
-    li.nav-item
-      = link_to "Profile", edit_user_registration_path, class: "nav-link" if user_signed_in?
-    li.nav-item
-      = link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link" if user_signed_in?
+  .navbar.navbar-inverse
+    .container-fluid
+      .navbar-header
+        = link_to "Calendar app", events_path, class: "navbar-brand"
+      ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          li
+            = link_to_with_icon 'Profile', 'glyphicon-home', edit_user_registration_path, class: "nav-link"
+          li
+            = link_to_with_icon 'Sign out', 'glyphicon-log-out', destroy_user_session_path, method: :delete, class: "nav-link"
+        - else
+          li
+            = link_to_with_icon 'Sign up', 'glyphicon-user', new_user_registration_path, class: "nav-link"
+          li
+            = link_to_with_icon 'Login', 'glyphicon-log-in', new_user_session_path, class: "nav-link"
