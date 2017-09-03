@@ -1,4 +1,6 @@
 module ApplicationHelper
+  ALERT_TYPES = [:danger, :info, :success, :warning]
+
   def bootstrap_flash
     flash_messages = []
     flash.each do |type, message|
@@ -7,7 +9,7 @@ module ApplicationHelper
 
       type = type.to_sym
       type = :success if type == :notice
-      type = :error   if type == :alert
+      type = :danger   if type == :alert
       next unless ALERT_TYPES.include?(type)
 
       Array(message).each do |msg|
@@ -19,5 +21,4 @@ module ApplicationHelper
     end
     flash_messages.join("\n").html_safe
   end
-
 end

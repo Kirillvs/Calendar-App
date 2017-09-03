@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title
+      | CalendarApp
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    .container
+      .page-header
+        = render 'layouts/navbar'
+      .jumbotron
+          = bootstrap_flash
+          = yield
+      .footer
+        hr
+        p = "#{Time.now.year}. All rights reserved ;)"

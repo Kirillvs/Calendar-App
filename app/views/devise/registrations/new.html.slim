@@ -1,0 +1,13 @@
+h2
+  | Sign up
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
+  = f.input :email, autofocus: true
+  = f.input :password
+  = f.input :password_confirmation
+  = f.input :name
+  = f.input :surname
+  = f.input :patronymic
+  = f.submit "Sign up", class: 'btn btn-primary'
+br
+= render "devise/shared/links"
