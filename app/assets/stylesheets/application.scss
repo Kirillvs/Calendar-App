@@ -1,0 +1,10 @@
+// Example using 'Cerulean' bootswatch
+
+//Import bootstrap-sprockets
+@import "bootstrap-sprockets";
+
+// Then bootstrap itself
+@import "bootstrap";
+
+ @import "events";
+ @import "scaffolds";

@@ -1,0 +1,7 @@
+= simple_form_for @event do |f|
+  = f.input :name
+  = f.input :description
+  = f.input :repetitive
+  = f.input :start, as: :date, input_html: { class: 'datepicker' }
+  = f.input :repeat_period, collection: Event.repeat_periods.keys
+  = f.button :submit
