@@ -1,0 +1,26 @@
+table.table
+  thead
+    tr
+      th
+        | Name
+      th
+        | Description
+      th
+        | Start
+      th
+        | Repetitive
+      th
+        | Repeat period
+  tbody
+    -  events.each do |event|
+      tr
+        td
+          = event.name
+        td
+          = event.description
+        td
+          = event.start
+        td
+          = event.repetitive
+        td
+          = event.repeat_period
