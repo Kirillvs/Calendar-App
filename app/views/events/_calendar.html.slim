@@ -1,5 +1,5 @@
 = month_calendar attribute: :start, events: events do |date, events|
-  = date
+  .small.bg-info = date
   - events.each do |event|
     div
       = event_link(event)
