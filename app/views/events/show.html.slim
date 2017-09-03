@@ -23,7 +23,12 @@ form
     label[for="repeat_period"]
       | Repeat period:
     h4
-      span.label.label-default#repeat_period = @event.repeat_period
+      span.label.label-default#repeat_period = @event.repeat_period || 'No'
+  .form-group
+    label[for="owner"]
+      | Owner:
+    h4
+      span.label.label-default#owner = @event.user_fio
 = link_to 'Edit', edit_event_path(@event)
 |  |
-= link_to 'Back', events_path
+=< link_to 'Back', events_path

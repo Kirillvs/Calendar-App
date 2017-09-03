@@ -1,10 +1,11 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user, only: [:edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.all_year
   end
 
   # GET /events/1
@@ -71,5 +72,11 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:name, :description, :start, :repetitive, :repeat_period)
         .merge(user_id: current_user.id)
+    end
+
+    def authorize_user
+      unless current_user.event_ids.include?(params[:id].to_i)
+        redirect_to root_path, alert: "Access denied!"
+      end
     end
 end

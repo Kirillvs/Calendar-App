@@ -1,3 +1,3 @@
 = render 'calendar', events: @events
 hr
-= render 'events_table', events: @events
+= render 'events_table', events: @events.select { |event| event.id }
