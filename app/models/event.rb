@@ -9,8 +9,8 @@ class Event < ApplicationRecord
   validates :repeat_period, presence: true, if: :repetitive
   validates :repeat_period, inclusion: { in: Event.repeat_periods.keys }, if: :repetitive
 
-  delegate :fio, to: :user, prefix: true
-  delegate :id, to: :user, prefix: true
+  delegate :fio, to: :user, prefix: true, allow_nil: true
+  delegate :id, to: :user, prefix: true, allow_nil: true
 
   scope :my, ->(my_id) { where(user_id: my_id) }
   scope :repetitable, -> { where(repetitive: true) }
