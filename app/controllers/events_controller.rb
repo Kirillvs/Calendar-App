@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :subscribe]
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
   # GET /events
@@ -60,6 +60,11 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def subscribe
+    EventNotificationJob.set(wait: 1.send(@event.repeat_period)).perform_later(current_user.id, @event)
+    redirect_to @event, notice: "Subscribed!"
   end
 
   private

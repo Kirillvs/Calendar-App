@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :events
+  resources :events do
+    get :subscribe, on: :member
+  end
   devise_for :users
 
   root to: "events#index"

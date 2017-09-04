@@ -29,6 +29,10 @@ form
       | Owner:
     h4
       span.label.label-default#owner = @event.user_fio
+hr
+  h4
+    = link_to 'Subscribe', subscribe_event_path(@event)
+hr
 = link_to 'Edit', edit_event_path(@event)
 |  |
 =< link_to 'Back', events_path
